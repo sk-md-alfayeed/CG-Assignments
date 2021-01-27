@@ -1,12 +1,9 @@
 package Assignment3;
 
-
-//This code is working fine as expected in my local machine but test cases are not passing online.
-
-
 import java.util.*;
 
 class MovieDetails {
+
 	private String movieName;
 	private String actor;
 	private String actress;
@@ -50,6 +47,26 @@ class MovieDetails {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(actor, actress, genre, movieName);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		MovieDetails other = (MovieDetails) obj;
+		return Objects.equals(actor, other.actor) && Objects.equals(actress, other.actress)
+				&& Objects.equals(genre, other.genre) && Objects.equals(movieName, other.movieName);
+	}
+	
+	
 
 }
 
