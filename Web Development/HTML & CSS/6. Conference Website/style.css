@@ -1,0 +1,252 @@
+/*--------------------------------------------------------------
+# Global Begin
+--------------------------------------------------------------*/
+header {
+  background: #0b2d5d;
+  color: white;
+  padding-top: 30px;
+  min-height: 70px;
+  border-bottom: #000000 3px solid;
+}
+
+/* Header */
+header a {
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+header li {
+  float: left;
+  display: inline;
+  padding: 0 10px 0 10px;
+}
+
+header #branding {
+  float: left;
+}
+
+header #branding h1 {
+  margin: 0;
+}
+
+header nav {
+  float: right;
+  margin-top: 10px;
+}
+
+header .highlight,
+header .a {
+  color: #e9ff26;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+header a:hover {
+  color: #d6ff5d;
+  font-weight: bold;
+}
+
+/* Header */
+
+body {
+  font: 15px/1.5 Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  background: whitesmoke;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+  text-align: justify;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/*--------------------------------------------------------------
+# Global Begin
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Button Begin
+--------------------------------------------------------------*/
+
+.button {
+  height: 50px;
+  background: #5653b1;
+  border: 1;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 2px;
+}
+
+/*--------------------------------------------------------------
+# Button End
+--------------------------------------------------------------*/
+
+/* Text Alignments */
+
+h1,
+h2,
+h3,
+h4,
+#committee,
+.aboutCol p,
+.committeeCol,
+.datelist {
+  text-align: center;
+}
+
+/* Index */
+.dateTitle {
+  font-weight: bold;
+}
+.dateDet {
+  padding-bottom: 10px;
+}
+
+/* Call for Papers */
+
+.ul-col {
+  margin: 15px;
+}
+
+/* Contact Us */
+
+.contactUs {
+  text-align: center;
+}
+
+/*--------------------------------------------------------------
+# Table Begin
+--------------------------------------------------------------*/
+
+.table {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+  border-style: solid;
+}
+.overflow {
+  overflow-x: auto;
+}
+
+th,
+td {
+  padding: 10px;
+}
+
+/*--------------------------------------------------------------
+# Table  End
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Color Section Begin
+--------------------------------------------------------------*/
+
+#about {
+  background-image: url("img/bg.png");
+  color: white;
+}
+
+#date {
+  background: whitesmoke;
+  color: black;
+}
+
+#aboutSection {
+  background-image: url("img/bg2.png");
+  color: white;
+}
+
+#aboutConference {
+  background: rgb(118, 125, 175);
+  color: white;
+}
+
+#committee {
+  background: whitesmoke;
+  color: black;
+}
+
+/*--------------------------------------------------------------
+# Color Section End
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+Collapse Items Begin
+--------------------------------------------------------------*/
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active,
+.collapsible:hover {
+  background-color: #555;
+}
+
+.collapsible:after {
+  content: "\002B"; /* Unicode character for "plus" sign (+) */
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212"; /* Unicode character for "minus" sign (-) */
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+
+/*--------------------------------------------------------------
+Collapse Items End
+--------------------------------------------------------------*/
+
+@media (max-width: 1500px) {
+  header #branding,
+  header nav,
+  header nav li {
+    float: none;
+    text-align: center;
+    width: 100%;
+  }
+
+  header {
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  body,
+  header,
+  header a,
+  section div,
+  h1 {
+    font-size: small;
+  }
+}

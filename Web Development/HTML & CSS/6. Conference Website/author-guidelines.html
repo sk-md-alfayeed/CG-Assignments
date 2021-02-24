@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Conference 2021</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header id="header">
+        <div class="container">
+            <div id="branding">
+                <h1><a href="index.html"><span class="highlight" style="font-size: 30px;">The Conference</span> 2021</a>
+                </h1>
+            </div>
+
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <li><a href="callforpapers.html">Call for Papers</a></li>
+                    <li><a href="author-guidelines.html">Author Guidelines</a></li>
+                    <li><a href="registration.html">Registration</a></li>
+                    <li><a href="index.html#committee">Committee</a></li>
+                    <li><a href="index.html#about">Venue</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <div>
+                <h2>Paper Submission Guidelines</h2><br>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="container">
+            <div>
+                <div>
+                    <h4>Instruction to Authors </h4>
+                    <p>Full length manuscript/paper in ANY format should be submitted through on-line paper submission
+                        mode. Following is the link for the submission:</p>
+                    <p> <a href="https://submitconnference.com/tc2021"
+                            target="_blank">https://submitconnference.com/tc2021</a> </p>
+                    <p>Manuscripts for TC2021 will ONLY be accepted in electronic format through online
+                        submission system. If you are unable to submit your
+                        contribution electronically, please contact us.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <button class="collapsible">Submission Guidelines</button>
+        <div class="content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex
+                ea commodo consequat.</p>
+        </div>
+
+        <br>
+        <hr class="container"><br>
+
+        <button class="collapsible">Template Download</button>
+        <div class="content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex
+                ea commodo consequat.</p>
+        </div>
+    </div>
+
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+</body>
+
+<br><br>
+<hr class="container"><br><br>
+
+</html>
