@@ -1,12 +1,13 @@
 package flightsearch.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
+
+@Document
 public class Flight {
 	@Id
-	private String Id;
+	private String id;
 	private String flightName;
 	private String departureAirport;
 	private String destinationAirport;
@@ -18,9 +19,9 @@ public class Flight {
     
     public Flight() {}
     
-    public Flight(String id, String flightName, String departureAirport, String destinationAirport,
+    public Flight(String _id, String flightName, String departureAirport, String destinationAirport,
 			String departureDate, String arrivalDate, String departureTime, String arrivalTime) {
-		Id = id;
+		id = _id;
 		this.flightName = flightName;
 		this.departureAirport = departureAirport;
 		this.destinationAirport = destinationAirport;
@@ -30,10 +31,10 @@ public class Flight {
 		this.arrivalTime = arrivalTime;
 	}
 	public String getId() {
-		return Id;
+		return id;
 	}
-	public void setId(String id) {
-		Id = id;
+	public void setId(String _id) {
+		id = _id;
 	}
 	public String getFlightName() {
 		return flightName;

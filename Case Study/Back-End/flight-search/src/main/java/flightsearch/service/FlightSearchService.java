@@ -11,5 +11,7 @@ import flightsearch.model.Search;
 public interface FlightSearchService {
 
 	List<Flight> getFlights(Search search);
+	
+	List<Flight> getAllFlights();
 
 }
