@@ -8,27 +8,25 @@
 		<version>2.4.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.cg.casestudy.flightsearch</groupId>
-	<artifactId>flight-search</artifactId>
+	<groupId>com.cg.casestudy.flightbook</groupId>
+	<artifactId>flight-book</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>flight-search-service</name>
+	<name>flight-book</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>15</java.version>
 		<spring-cloud.version>2020.0.0</spring-cloud.version>
 	</properties>
-	
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
-		</dependency>
-		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
