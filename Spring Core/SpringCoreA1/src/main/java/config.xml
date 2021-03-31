@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+
+
+	<bean name="address1" class = "com.cg.springcore.a1.Address">
+		<property name="street" value = "The Street"/>
+		<property name="city" value="The City"/>
+		<property name="state" value = "The State"/>
+		<property name="zip" value = "101010"/>
+		<property name="country" value = "India"/>
+	</bean>
+	<bean name="address2" class="com.cg.springcore.a1.Address">
+		<property name="street" value = "Street The"/>
+		<property name="city" value="City The"/>
+		<property name="state" value = "State The"/>
+		<property name="zip" value = "010101"/>
+		<property name="country" value = "India"/>
+	</bean>
+	
+	<bean name="customer1" class="com.cg.springcore.a1.Customer">
+	<property name= "customerID" value = "123" />
+	<property name="customerName" value="The Name"/>
+	<property name="customerContact" value="1234567890"/>
+	<property name="customerAddress" ref="address1"/>	
+	</bean>
+	
+	<bean name="customer2" class="com.springcore.ks.springcore.Customer">
+		<constructor-arg type="int" value = "456"/>
+		<constructor-arg type ="java.lang.String" value="Name Thhe"/>
+		<constructor-arg type="java.lang.String" value = "0987654321"/>
+		<constructor-arg type="com.springcore.ks.springcore.Address" ref="address2"/>
+	</bean>
+
+
+</beans>
+

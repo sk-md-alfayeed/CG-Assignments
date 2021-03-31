@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"> 
+
+
+<bean name="listQuestion" class="com.cg.springcore.a2.ListQuestion">
+		<property name="questionId" value="01"/>
+		<property name="question" value="What is your name?"/>
+		<property name="answers">
+			<list>
+				<value>Alpha</value>
+				<value>Bravo</value>
+				<value>Charlie</value>
+			</list>
+		</property>
+</bean>
+<bean name="setQuestion" class="com.cg.springcore.a2.SetQuestion">
+		<property name="questionId" value="02"/>
+		<property name="question" value="What is your fav movie?"/>
+		<property name="answers">
+			<set>
+				<value>Avengers</value>
+				<value>Justice League</value>
+				<value>John Wick</value>
+			</set>
+		</property>
+</bean>
+ <bean name="mapQuestion" class="com.cg.springcore.a2.MapQuestion">
+ 		<property name="questionId" value="03"/>
+		<property name="question" value="What is your friend's name?"/>
+		<property name="answers">
+			<map>
+				<entry key="1" value="Delta"/>
+				<entry key="2" value="Echo"/>
+				<entry key="3" value="Foxtrot"/>
+			</map>
+		</property>
+ </bean>
+</beans>
