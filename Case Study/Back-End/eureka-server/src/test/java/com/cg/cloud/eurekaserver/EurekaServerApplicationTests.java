@@ -1,10 +1,10 @@
-package com.cg.casestudy;
+package com.cg.cloud.eurekaserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FlightHomeApplicationTests {
+class EurekaServerApplicationTests {
 
 	@Test
 	void contextLoads() {

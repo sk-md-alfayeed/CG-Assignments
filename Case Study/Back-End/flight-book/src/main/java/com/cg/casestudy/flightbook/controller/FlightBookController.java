@@ -1,38 +1,56 @@
 package com.cg.casestudy.flightbook.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.casestudy.flightbook.model.Booking;
 import com.cg.casestudy.flightbook.model.Flight;
-import com.cg.casestudy.flightbook.service.FlightBookServiceImpl;
+import com.cg.casestudy.flightbook.service.FlightBookService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class FlightBookController {
 
 	@Autowired
-	private FlightBookServiceImpl flightBookServiceImpl;
+	private FlightBookService flightBookService;
 
-	@GetMapping("/findFlight/{flightId}")
+	//Getting REST GET request and returning 'Flight object' from FlightBookService
+	@GetMapping("/getFlight/{flightId}")
 	public Flight getFlight(@PathVariable String flightId) {
-		return flightBookServiceImpl.getFlight(flightId);
+		return flightBookService.getFlight(flightId);
+	}
+
+	//Getting REST GET request and returning 'Booking List' from FlightBookService
+	@GetMapping(value = "/allBookings")
+	public List<Booking> getAllBookings() {
+		return flightBookService.getAllBookings();
 	}
 	
-	@PostMapping("/addBooking")
-	public String saveBooking(@RequestBody Booking booking) {
-		return flightBookServiceImpl.saveBooking(booking);
+	//Getting REST GET request and returning 'Booking Object/ Optional' from FlightBookService
+	@GetMapping("/getBooking/{bookingId}")
+	public Optional<Booking> getBooking(@PathVariable String bookingId) {
+		return flightBookService.getBooking(bookingId);
 	}
-
-	@DeleteMapping("/cancelBooking/{id}")
-	public String cancelBooking(@PathVariable String id) {
-		return flightBookServiceImpl.cancelBooking(id);
+	
+	//Getting REST POST request and returning 'String/Void' from FlightBookService
+	@PostMapping("/addBooking")
+	public String addBooking(@RequestBody Booking booking) {
+		return flightBookService.addBooking(booking);
+	}
+	
+	//Getting REST PUT request and returning 'String/Void' from FlightBookService
+	@PutMapping("/updateBooking")
+	public String updateBooking(@RequestBody Booking booking) {
+		return flightBookService.updateBooking(booking);
 	}
 
 }

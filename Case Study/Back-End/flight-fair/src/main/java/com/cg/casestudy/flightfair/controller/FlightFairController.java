@@ -16,43 +16,49 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cg.casestudy.flightfair.model.Fair;
 import com.cg.casestudy.flightfair.model.FlightFair;
 import com.cg.casestudy.flightfair.model.FlightList;
-import com.cg.casestudy.flightfair.service.FlightFairServiceImpl;
+import com.cg.casestudy.flightfair.service.FlightFairService;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class FlightFairController {
 
 	@Autowired
-	FlightFairServiceImpl flightFairServiceImpl;
+	public FlightFairService flightFairService;
 	
-	@GetMapping(value = "/allFairs")
-	public List<Fair> getAllFairs() {
-		return flightFairServiceImpl.getAllFairs();
-	}
-	
-	@GetMapping(value = "/findFair/{flightId}")
-	public Optional<Fair> getFair(@PathVariable String flightId) {
-		return flightFairServiceImpl.getFair(flightId);
-	}
-
+	//Getting REST POST request and returning 'FlightFair object' from FlightFairService
 	@PostMapping(value = "/fairs")
 	public FlightFair getFairs(@RequestBody FlightList flightList) {
-		return flightFairServiceImpl.getFairs(flightList);
+		return flightFairService.getFairs(flightList);
 	}
 	
-	@PostMapping("/addFair")
-	public String addFair(@RequestBody Fair fair) {
-		return flightFairServiceImpl.addFair(fair);
+	//Getting REST GET request and returning 'All Fair List' from FlightFairService
+	@GetMapping(value = "/allFairs")
+	public List<Fair> getAllFairs() {
+		return flightFairService.getAllFairs();
 	}
 	
-	@PutMapping(value = "/updateFair")
-	public String  updateFair(@RequestBody Fair fair) {
-		return flightFairServiceImpl.updateFair(fair);
+	//Getting REST GET request and returning 'Fair object/ Optional' from FlightFairService
+	@GetMapping(value = "/findFair/{flightId}")
+	public Optional<Fair> getFair(@PathVariable String flightId) {
+		return flightFairService.getFair(flightId);
 	}
 
+	//Getting REST POST request and returning 'String/Void' from FlightFairService
+	@PostMapping("/addFair")
+	public String addFair(@RequestBody Fair fair) {
+		return flightFairService.addFair(fair);
+	}
+	
+	//Getting REST PUT request and returning 'String/Void' from FlightFairService
+	@PutMapping(value = "/updateFair")
+	public String  updateFair(@RequestBody Fair fair) {
+		return flightFairService.updateFair(fair);
+	}
+
+	//Getting REST DELETE request and returning 'String/Void' from FlightFairService
 	@DeleteMapping("/deleteFair/{flightId}")
 	public String deleteFair(@PathVariable String flightId) {
-		return flightFairServiceImpl.deleteFair(flightId);
+		return flightFairService.deleteFair(flightId);
 	}
 
 }

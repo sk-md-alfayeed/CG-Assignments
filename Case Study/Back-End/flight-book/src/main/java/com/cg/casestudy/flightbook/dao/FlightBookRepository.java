@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.cg.casestudy.flightbook.model.Booking;
 
 @Repository
-public interface FlightBookRepo extends MongoRepository<Booking, String>{
+public interface FlightBookRepository extends MongoRepository<Booking, String>{
 
 }

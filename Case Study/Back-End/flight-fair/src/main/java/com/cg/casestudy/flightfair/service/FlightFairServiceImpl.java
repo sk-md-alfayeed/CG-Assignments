@@ -12,37 +12,45 @@ import com.cg.casestudy.flightfair.model.FlightList;
 import com.cg.casestudy.flightfair.repository.FlightFairReopsitory;
 
 @Service
-public class FlightFairServiceImpl {
+public class FlightFairServiceImpl implements FlightFairService {
 
 	@Autowired
 	FlightFairReopsitory flightFairRepository;
 
-	public List<Fair> getAllFairs() {
-
-		return flightFairRepository.findAll();
-	}
-
-	public Optional<Fair> getFair(String flightId) {
-		return flightFairRepository.findByFlightId(flightId);
-
-	}
-
+	// Getting 'FlightFair object' from FlightFairReopsitory by custom search
+	@Override
 	public FlightFair getFairs(FlightList flightList) {
 		return new FlightFair(flightFairRepository.findByFlightIdIn(flightList.getFlightList()));
 	}
+	
+	// Getting 'All Fair List' from FlightFairReopsitory
+	@Override
+	public List<Fair> getAllFairs() {
+		return flightFairRepository.findAll();
+	}
 
+	// Getting 'Fair object/Optional' from FlightFairReopsitory
+	@Override
+	public Optional<Fair> getFair(String flightId) {
+		return flightFairRepository.findByFlightId(flightId);
+	}
+
+	// Adding 'Fair' to database using FlightFairReopsitory
+	@Override
 	public String addFair(Fair fair) {
 		flightFairRepository.save(fair);
 		return "Added Fair with flightId : " + fair.getFlightId();
-
 	}
-
+	
+	// Updating 'Fair' in database using FlightFairReopsitory
+	@Override
 	public String updateFair(Fair fair) {
 		flightFairRepository.save(fair);
 		return "Updated Fair with flightId : " + fair.getFlightId();
 	}
 
-	// Delete Fair by Flight Id
+	// Deleting 'Fair' by Flight Id in database using FlightFairReopsitory
+	@Override
 	public String deleteFair(String flightId) {
 		flightFairRepository.deleteByFlightId(flightId);
 		return "Fair Deleted with flightId : " + flightId;
