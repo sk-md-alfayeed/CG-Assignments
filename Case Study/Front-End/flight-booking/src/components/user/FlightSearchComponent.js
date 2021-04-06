@@ -1,8 +1,9 @@
 // import "../../style.css";
-import React from "react";
+import React, { Component } from "react";
+import { withRouter } from "react-router";
 import FlightService from "../../services/FlightService";
 
-class FlightSearchComponent extends React.Component {
+class FlightSearchComponent extends Component {
   constructor(props) {
     super(props);
 
@@ -21,15 +22,17 @@ class FlightSearchComponent extends React.Component {
     this.searchFlights = this.searchFlights.bind(this);
   }
 
-  componentDidMount() {
-    let search = {
-      departureAirport: this.state.departureAirport,
-      destinationAirport: this.state.destinationAirport,
-    };
-    FlightService.getFlights(search).then((response) => {
-      this.setState({ flights: response.data });
-    });
-  }
+  // componentDidMount() {
+  //   let search = {
+  //     departureAirport: this.state.departureAirport,
+  //     destinationAirport: this.state.destinationAirport,
+  //   };
+  //   FlightService.getFlights(search).then((response) => {
+  //     this.setState({ flights: response.data }).catch((error) =>
+  //       console.error(`Error :  ${error}`)
+  //     );
+  //   });
+  // }
 
   searchFlights = (event) => {
     event.preventDefault();
@@ -127,9 +130,9 @@ class FlightSearchComponent extends React.Component {
                 {this.state.flights.map((flight) => (
                   <tr key={flight.id}>
                     <td> {flight.id}</td>
-                    <td> {flight.flightName}</td>
-                    <td> {flight.departureAirport}</td>
-                    <td> {flight.destinationAirport}</td>
+                    <td> {flight.airline.airlineName}</td>
+                    <td> {flight.departureAirport.airportCode}</td>
+                    <td> {flight.destinationAirport.airportCode}</td>
                     <td> {flight.departureDate}</td>
                     <td> {flight.arrivalDate}</td>
                     <td> {flight.departureTime}</td>
@@ -152,4 +155,4 @@ class FlightSearchComponent extends React.Component {
     );
   }
 }
-export default FlightSearchComponent;
+export default withRouter(FlightSearchComponent);
