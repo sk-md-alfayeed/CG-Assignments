@@ -44,7 +44,7 @@ public class FlightSearchController {
 
 	//Getting REST POST request and returning response from FlightSearchService
 	@PostMapping("/addFlight")
-	public String saveFlight(@RequestBody Flight flight) {
+	public String addFlight(@RequestBody Flight flight) {
 		return flightSearchService.addFlight(flight);
 	}
 

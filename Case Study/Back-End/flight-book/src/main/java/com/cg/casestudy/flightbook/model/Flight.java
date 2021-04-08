@@ -6,29 +6,32 @@ public class Flight {
 
 	@Id
 	private String id;
-	private String flightName;
-	private String departureAirport;
-	private String destinationAirport;
+	private Airline airline;
+	private Airport departureAirport;
+	private Airport destinationAirport;
 	private String departureDate;
 	private String arrivalDate;
 	private String departureTime;
 	private String arrivalTime;
+	private Integer seats;
 	private Integer flightFair;
 
 	public Flight() {
 	}
 
-	public Flight(String id, String flightName, String departureAirport, String destinationAirport,
-			String departureDate, String arrivalDate, String departureTime, String arrivalTime, Integer flightFair) {
+	public Flight(String id, Airline airline, Airport departureAirport, Airport destinationAirport,
+			String departureDate, String arrivalDate, String departureTime, String arrivalTime, Integer seats,
+			Integer flightFair) {
 		super();
 		this.id = id;
-		this.flightName = flightName;
+		this.airline = airline;
 		this.departureAirport = departureAirport;
 		this.destinationAirport = destinationAirport;
 		this.departureDate = departureDate;
 		this.arrivalDate = arrivalDate;
 		this.departureTime = departureTime;
 		this.arrivalTime = arrivalTime;
+		this.seats = seats;
 		this.flightFair = flightFair;
 	}
 
@@ -40,27 +43,27 @@ public class Flight {
 		this.id = id;
 	}
 
-	public String getFlightName() {
-		return flightName;
+	public Airline getAirline() {
+		return airline;
 	}
 
-	public void setFlightName(String flightName) {
-		this.flightName = flightName;
+	public void setAirline(Airline airline) {
+		this.airline = airline;
 	}
 
-	public String getDepartureAirport() {
+	public Airport getDepartureAirport() {
 		return departureAirport;
 	}
 
-	public void setDepartureAirport(String departureAirport) {
+	public void setDepartureAirport(Airport departureAirport) {
 		this.departureAirport = departureAirport;
 	}
 
-	public String getDestinationAirport() {
+	public Airport getDestinationAirport() {
 		return destinationAirport;
 	}
 
-	public void setDestinationAirport(String destinationAirport) {
+	public void setDestinationAirport(Airport destinationAirport) {
 		this.destinationAirport = destinationAirport;
 	}
 
@@ -96,6 +99,14 @@ public class Flight {
 		this.arrivalTime = arrivalTime;
 	}
 
+	public Integer getSeats() {
+		return seats;
+	}
+
+	public void setSeats(Integer seats) {
+		this.seats = seats;
+	}
+
 	public Integer getFlightFair() {
 		return flightFair;
 	}
@@ -104,13 +115,4 @@ public class Flight {
 		this.flightFair = flightFair;
 	}
 
-	@Override
-	public String toString() {
-		return "Flight [id=" + id + ", flightName=" + flightName + ", departureAirport=" + departureAirport
-				+ ", destinationAirport=" + destinationAirport + ", departureDate=" + departureDate + ", arrivalDate="
-				+ arrivalDate + ", departureTime=" + departureTime + ", arrivalTime=" + arrivalTime + ", flightFair="
-				+ flightFair + "]";
-	}
-
-	
 }

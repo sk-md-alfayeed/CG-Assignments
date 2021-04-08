@@ -13,11 +13,14 @@ public interface FlightBookService {
 
 	public Flight getFlight(String flightId);
 
+	public List<Booking> getBookingsByUserId(String userId);
+
 	public List<Booking> getAllBookings();
 
 	public Optional<Booking> getBooking(String bookingId);
-	
+
 	public String addBooking(Booking booking);
-	
+
 	public String updateBooking(Booking booking);
+
 }

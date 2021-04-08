@@ -23,31 +23,40 @@ public class FlightBookController {
 	@Autowired
 	private FlightBookService flightBookService;
 
-	//Getting REST GET request and returning 'Flight object' from FlightBookService
+	// Getting REST GET request and returning 'Flight object' from FlightBookService
 	@GetMapping("/getFlight/{flightId}")
 	public Flight getFlight(@PathVariable String flightId) {
 		return flightBookService.getFlight(flightId);
 	}
 
-	//Getting REST GET request and returning 'Booking List' from FlightBookService
-	@GetMapping(value = "/allBookings")
+	// Getting REST GET request and returning 'Booking list' related to the userId
+	// from FlightBookService
+	@GetMapping("/getBookingsByUserId/{userId}")
+	public List<Booking> getBookingsByUserId(@PathVariable String userId) {
+		return flightBookService.getBookingsByUserId(userId);
+		
+	}
+
+	// Getting REST GET request and returning 'Booking List' from FlightBookService
+	@GetMapping("/allBookings")
 	public List<Booking> getAllBookings() {
 		return flightBookService.getAllBookings();
 	}
-	
-	//Getting REST GET request and returning 'Booking Object/ Optional' from FlightBookService
+
+	// Getting REST GET request and returning 'Booking Object/ Optional' from
+	// FlightBookService
 	@GetMapping("/getBooking/{bookingId}")
 	public Optional<Booking> getBooking(@PathVariable String bookingId) {
 		return flightBookService.getBooking(bookingId);
 	}
-	
-	//Getting REST POST request and returning 'String/Void' from FlightBookService
+
+	// Getting REST POST request and returning 'String/Void' from FlightBookService
 	@PostMapping("/addBooking")
 	public String addBooking(@RequestBody Booking booking) {
 		return flightBookService.addBooking(booking);
 	}
-	
-	//Getting REST PUT request and returning 'String/Void' from FlightBookService
+
+	// Getting REST PUT request and returning 'String/Void' from FlightBookService
 	@PutMapping("/updateBooking")
 	public String updateBooking(@RequestBody Booking booking) {
 		return flightBookService.updateBooking(booking);

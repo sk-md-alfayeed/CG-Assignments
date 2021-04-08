@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.cg.casestudy.flightbook.dao.FlightBookRepository;
 import com.cg.casestudy.flightbook.model.Booking;
 import com.cg.casestudy.flightbook.model.Fair;
 import com.cg.casestudy.flightbook.model.Flight;
+import com.cg.casestudy.flightbook.repository.FlightBookRepository;
 
 @Service
 public class FlightBookServiceImpl implements FlightBookService {
@@ -46,6 +46,13 @@ public class FlightBookServiceImpl implements FlightBookService {
 
 	}
 	
+	// Getting 'Booking List related to the userID from FlightBookReopsitory
+	@Override
+	public List<Booking> getBookingsByUserId(String userId) {
+		return flightBookRepository.findByUserId(userId);
+
+	}
+	
 	// Getting 'All Booking List' from FlightBookReopsitory
 	@Override
 	public List<Booking> getAllBookings() {
@@ -69,7 +76,7 @@ public class FlightBookServiceImpl implements FlightBookService {
 	@Override
 	public String updateBooking(Booking booking) {
 		flightBookRepository.save(booking);
-		return "Flight Cancelled with: " + booking.getId();
+		return "Flight Updated with: " + booking.getId();
 	}
 
 }

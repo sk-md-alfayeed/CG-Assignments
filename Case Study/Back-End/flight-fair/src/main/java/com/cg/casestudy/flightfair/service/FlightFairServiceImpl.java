@@ -22,7 +22,7 @@ public class FlightFairServiceImpl implements FlightFairService {
 	public FlightFair getFairs(FlightList flightList) {
 		return new FlightFair(flightFairRepository.findByFlightIdIn(flightList.getFlightList()));
 	}
-	
+
 	// Getting 'All Fair List' from FlightFairReopsitory
 	@Override
 	public List<Fair> getAllFairs() {
@@ -41,7 +41,7 @@ public class FlightFairServiceImpl implements FlightFairService {
 		flightFairRepository.save(fair);
 		return "Added Fair with flightId : " + fair.getFlightId();
 	}
-	
+
 	// Updating 'Fair' in database using FlightFairReopsitory
 	@Override
 	public String updateFair(Fair fair) {
@@ -49,9 +49,16 @@ public class FlightFairServiceImpl implements FlightFairService {
 		return "Updated Fair with flightId : " + fair.getFlightId();
 	}
 
+	// Deleting 'Fair' by Id in database using FlightFairReopsitory
+	@Override
+	public String deleteFair(String id) {
+		flightFairRepository.deleteById(id);
+		return "Fair Deleted with Id : " + id;
+	}
+
 	// Deleting 'Fair' by Flight Id in database using FlightFairReopsitory
 	@Override
-	public String deleteFair(String flightId) {
+	public String deleteFairByFlightId(String flightId) {
 		flightFairRepository.deleteByFlightId(flightId);
 		return "Fair Deleted with flightId : " + flightId;
 	}

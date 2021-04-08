@@ -22,6 +22,8 @@ public interface FlightFairService {
 	
 	public String updateFair(Fair fair);
 	
-	public String deleteFair(String flightId);
+	public String deleteFair(String id);
+
+	public String deleteFairByFlightId(String flightId);
 
 }

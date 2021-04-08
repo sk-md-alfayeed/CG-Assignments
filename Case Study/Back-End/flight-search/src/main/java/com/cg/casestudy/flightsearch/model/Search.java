@@ -6,6 +6,8 @@ public class Search {
 	private String departureAirport;
 	private String destinationAirport;
 	
+	public Search() {}
+	
 	public Search(String departureAirport, String destinationAirport) {
 		this.departureAirport = departureAirport;
 		this.destinationAirport = destinationAirport;

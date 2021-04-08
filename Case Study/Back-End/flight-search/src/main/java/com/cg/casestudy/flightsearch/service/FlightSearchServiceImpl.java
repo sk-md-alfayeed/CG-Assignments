@@ -7,9 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.cg.casestudy.flightsearch.dao.FlightSearchRepository;
+import com.cg.casestudy.flightsearch.model.Fair;
 import com.cg.casestudy.flightsearch.model.Flight;
 import com.cg.casestudy.flightsearch.model.Search;
+import com.cg.casestudy.flightsearch.repository.FlightSearchRepository;
 
 @Service
 public class FlightSearchServiceImpl implements FlightSearchService {
@@ -27,16 +28,16 @@ public class FlightSearchServiceImpl implements FlightSearchService {
 	// Get flights by custom search
 	public List<Flight> getFlights(Search search) {
 
-		//Custom search 
-		searchedList = flightSearchRepo.findByDepartureAirportAndDestinationAirport(search.getDepartureAirport(),
-				search.getDestinationAirport());
-		
+		// Custom search
+		searchedList = flightSearchRepo.findByDepartureAirportAirportCodeAndDestinationAirportAirportCode(
+				search.getDepartureAirport(), search.getDestinationAirport());
+
 		// making list of flightIds
 //		flightList.setFlightList(searchedList.stream().map(Flight::getId).collect(Collectors.toList()));
 		return searchedList;
 	}
 
-	// Getting All Flight
+	// Getting All Flights
 	@Override
 	public List<Flight> getAllFlights() {
 
@@ -53,7 +54,17 @@ public class FlightSearchServiceImpl implements FlightSearchService {
 	@Override
 	public String addFlight(Flight flight) {
 		flightSearchRepo.save(flight);
+		Fair fair = new Fair(flight.getId(), flight.getId(), flight.getAirline().getAirlineName(), 3000);
+		try {
+			// Adding the default Fair to Flight Fair Microservice while this addFlight
+			// method is called
+			restTemplate.postForObject("http://flight-fair/addFair", fair, Fair.class);
+		} catch (Exception e) {
+			return "Fair Not Added but Flight Added with Flight Id : " + flight.getId();
+		}
+
 		return "Flight Added  with id : " + flight.getId();
+
 	}
 
 	// Updating the Flight
@@ -68,7 +79,8 @@ public class FlightSearchServiceImpl implements FlightSearchService {
 	public String deleteFlight(String flightId) {
 		flightSearchRepo.deleteById(flightId);
 		try {
-			// Deleting the Fair from Flight Fair Microservice while this deleteFlight method is called
+			// Deleting the Fair from Flight Fair Microservice while this deleteFlight
+			// method is called
 			restTemplate.delete("http://flight-fair/deleteFair/" + flightId);
 		} catch (Exception e) {
 			return "Flight deleted with Flight Id : " + flightId;

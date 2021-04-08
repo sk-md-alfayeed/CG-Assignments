@@ -38,7 +38,7 @@ public class FlightFairController {
 	}
 	
 	//Getting REST GET request and returning 'Fair object/ Optional' from FlightFairService
-	@GetMapping(value = "/findFair/{flightId}")
+	@GetMapping(value = "/getFair/{flightId}")
 	public Optional<Fair> getFair(@PathVariable String flightId) {
 		return flightFairService.getFair(flightId);
 	}
@@ -56,9 +56,14 @@ public class FlightFairController {
 	}
 
 	//Getting REST DELETE request and returning 'String/Void' from FlightFairService
-	@DeleteMapping("/deleteFair/{flightId}")
-	public String deleteFair(@PathVariable String flightId) {
-		return flightFairService.deleteFair(flightId);
+	@DeleteMapping("/deleteFair/{id}")
+	public String deleteFair(@PathVariable String id) {
+		return flightFairService.deleteFair(id);
 	}
-
+	
+	//Getting REST DELETE request and returning 'String/Void' from FlightFairService
+	@DeleteMapping("/deleteFairByFlightId/{flightId}")
+	public String deleteFairByFlightId(@PathVariable String flightId) {
+		return flightFairService.deleteFairByFlightId(flightId);
+	}
 }

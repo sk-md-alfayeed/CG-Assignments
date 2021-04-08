@@ -1,4 +1,4 @@
-package com.cg.casestudy.flightsearch.dao;
+package com.cg.casestudy.flightsearch.repository;
 
 import java.util.List;
 
@@ -12,5 +12,5 @@ public interface FlightSearchRepository extends MongoRepository<Flight, String> 
 	
 	
 	//Custom Search for fetching data from database
-	List<Flight> findByDepartureAirportAndDestinationAirport(String departureAirport, String destinationAirport);
+	List<Flight> findByDepartureAirportAirportCodeAndDestinationAirportAirportCode(String departureAirportAirportCode, String destinationAirportAirportCode);
 }

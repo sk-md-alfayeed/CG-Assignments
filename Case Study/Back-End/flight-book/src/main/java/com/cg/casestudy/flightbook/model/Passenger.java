@@ -14,8 +14,6 @@ public class Passenger {
 	
 	public Passenger() {}
 	
-	
-
 	public Passenger(String id, String firstName, String middleName, String lastName, String age, String gender) {
 		super();
 		this.id = id;
