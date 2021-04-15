@@ -32,13 +32,17 @@ function AddOrUpdateAirport() {
       airportName: airportName,
     };
     if (id === "add") {
-      FlightService.addAirport(airport).then((res) => {
-        history.push("/addOrUpdateAirport/add");
-      });
+      FlightService.addAirport(airport)
+        .then((res) => {
+          history.push("/add_or_update_airport/add");
+        })
+        .catch((error) => console.error(`Error :  ${error}`));
     } else {
-      FlightService.updateAirport(airport).then((res) => {
-        history.push("/addOrUpdateAirport/:id");
-      });
+      FlightService.updateAirport(airport)
+        .then((res) => {
+          history.push("/add_or_update_airport/:id");
+        })
+        .catch((error) => console.error(`Error :  ${error}`));
     }
   };
 
@@ -65,9 +69,9 @@ function AddOrUpdateAirport() {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Id"
-                  name="id"
-                  value={airportId}
+                  placeholder="Airport Id"
+                  name="airpordid"
+                  value={airportId || ""}
                   onChange={(e) => {
                     setAirportId(e.target.value);
                   }}
@@ -81,7 +85,7 @@ function AddOrUpdateAirport() {
                   className="form-control"
                   placeholder="Airport Code"
                   name="airportCode"
-                  value={airportCode}
+                  value={airportCode || ""}
                   onChange={(e) => {
                     setAirportCode(e.target.value);
                   }}
@@ -95,7 +99,7 @@ function AddOrUpdateAirport() {
                   className="form-control"
                   placeholder="Airport Name"
                   name="airportName"
-                  value={airportName}
+                  value={airportName || ""}
                   onChange={(e) => {
                     setAirportName(e.target.value);
                   }}

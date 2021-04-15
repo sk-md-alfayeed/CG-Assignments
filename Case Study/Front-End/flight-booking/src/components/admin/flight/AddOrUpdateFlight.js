@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import { useParams, useHistory } from "react-router-dom";
 import FlightService from "../../../services/FlightService";
 
@@ -33,9 +32,9 @@ function AddOrUpdateFlight() {
       })
       .catch((error) => console.error(`Error :  ${error}`));
     if (id === "add") {
-      setAirlineName("AirAlpha");
-      setDepartureAirportCode("DEL");
-      setDestinationAirportCode("BOM");
+      setAirlineName("");
+      setDepartureAirportCode("");
+      setDestinationAirportCode("");
       return;
     } else {
       FlightService.getFlight(id)
@@ -60,15 +59,22 @@ function AddOrUpdateFlight() {
     event.preventDefault();
     let flight = {
       id: flightId,
-      airline: airlineList.find(
-        (element) => element.airlineName === airlineName
-      ),
-      departureAirport: airportList.find(
-        (element) => element.airportCode === departureAirportCode
-      ),
-      destinationAirport: airportList.find(
-        (element) => element.airportCode === destinationAirportCode
-      ),
+      airline:
+        airlineName !== ""
+          ? airlineList.find((element) => element.airlineName === airlineName)
+          : {},
+      departureAirport:
+        departureAirportCode !== ""
+          ? airportList.find(
+              (element) => element.airportCode === departureAirportCode
+            )
+          : {},
+      destinationAirport:
+        destinationAirportCode !== ""
+          ? airportList.find(
+              (element) => element.airportCode === destinationAirportCode
+            )
+          : {},
       departureDate: departureDate,
       arrivalDate: arrivalDate,
       departureTime: departureTime,
@@ -76,25 +82,29 @@ function AddOrUpdateFlight() {
       seats: seats,
     };
     if (id === "add") {
-      FlightService.addFlght(flight).then((res) => {
-        history.push("/manageFlights");
-      });
+      FlightService.addFlght(flight)
+        .then((res) => {
+          history.push("/manage_flight");
+        })
+        .catch((error) => console.error(`Error :  ${error}`));
     } else {
-      FlightService.updateFlight(flight).then((res) => {
-        history.push("/manageFlights");
-      });
+      FlightService.updateFlight(flight)
+        .then((res) => {
+          history.push("/manage_flight");
+        })
+        .catch((error) => console.error(`Error :  ${error}`));
     }
   };
 
   const cancel = () => {
-    history.push("/manageFlights");
+    history.push("/manage_flight");
   };
 
   const getTitle = () => {
     if (id === "add") {
-      return <h3 className="text-center">Add Airport</h3>;
+      return <h3 className="text-center">Add Flight</h3>;
     } else {
-      return <h3 className="text-center">Update Airport</h3>;
+      return <h3 className="text-center">Update Flight</h3>;
     }
   };
 
@@ -114,7 +124,7 @@ function AddOrUpdateFlight() {
                     placeholder="Flight Id"
                     name="flightId"
                     className="form-control"
-                    value={flightId}
+                    value={flightId || ""}
                     onChange={(e) => {
                       setFlightId(e.target.value);
                     }}
@@ -125,12 +135,12 @@ function AddOrUpdateFlight() {
                   <select
                     className="form-control"
                     name="airlineName"
-                    value={airlineName}
+                    value={airlineName || ""}
                     onChange={(e) => {
                       setAirlineName(e.target.value);
                     }}
                   >
-                    <option value="AirAlpha">-</option>
+                    <option value="">-</option>
                     {airlineList.map((airline) => (
                       <option
                         key={airline.airlineName}
@@ -146,12 +156,12 @@ function AddOrUpdateFlight() {
                   <select
                     className="form-control"
                     name="departureAirport"
-                    value={departureAirportCode}
+                    value={departureAirportCode || ""}
                     onChange={(e) => {
                       setDepartureAirportCode(e.target.value);
                     }}
                   >
-                    <option value="CCU">-</option>
+                    <option value="">-</option>
                     {airportList.map((airport) => (
                       <option
                         key={airport.airportCode}
@@ -167,12 +177,12 @@ function AddOrUpdateFlight() {
                   <select
                     className="form-control"
                     name="destinatonAirport"
-                    value={destinationAirportCode}
+                    value={destinationAirportCode || ""}
                     onChange={(e) => {
                       setDestinationAirportCode(e.target.value);
                     }}
                   >
-                    <option value="CCU">-</option>
+                    <option value="">-</option>
                     {airportList.map((airport) => (
                       <option
                         key={airport.airportCode}
@@ -190,7 +200,7 @@ function AddOrUpdateFlight() {
                     placeholder="Departure Date"
                     name="departureDate"
                     className="form-control"
-                    value={departureDate}
+                    value={departureDate || ""}
                     onChange={(e) => {
                       setDepartureDate(e.target.value);
                     }}
@@ -203,7 +213,7 @@ function AddOrUpdateFlight() {
                     placeholder="Arrival Date"
                     name="arrivalDate"
                     className="form-control"
-                    value={arrivalDate}
+                    value={arrivalDate || ""}
                     onChange={(e) => {
                       setArrivalDate(e.target.value);
                     }}
@@ -215,7 +225,7 @@ function AddOrUpdateFlight() {
                     placeholder="Departure Time"
                     name="departureTime"
                     className="form-control"
-                    value={departureTime}
+                    value={departureTime || ""}
                     onChange={(e) => {
                       setDepartureTime(e.target.value);
                     }}
@@ -227,7 +237,7 @@ function AddOrUpdateFlight() {
                     placeholder="Arrival Time"
                     name="arrivalTime"
                     className="form-control"
-                    value={arrivalTime}
+                    value={arrivalTime || ""}
                     onChange={(e) => {
                       setArrivalTime(e.target.value);
                     }}
@@ -239,7 +249,7 @@ function AddOrUpdateFlight() {
                     placeholder="Seats"
                     name="seats"
                     className="form-control"
-                    value={seats}
+                    value={seats || ""}
                     onChange={(e) => {
                       setSeats(e.target.value);
                     }}

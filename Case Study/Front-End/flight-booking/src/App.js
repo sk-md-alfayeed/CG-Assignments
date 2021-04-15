@@ -2,110 +2,122 @@ import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import FlightAllComponent from "./components/user/FlightAllComponent";
-import FlightSearchComponent from "./components/user/FlightSearchComponent";
-import FlightBookComponent from "./components/user/FlightBookComponent";
-import FooterComponent from "./components/global/FooterComponent";
-import HeaderComponent from "./components/global/HeaderComponent";
-import FlightCheckInComponent from "./components/user/FlightCheckInComponent";
-
-import HomeComponent from "./components/global/HomeComponent";
-import LoginComponentClass from "./components/auth/LoginComponentClass";
-import AdminDashboardComponent from "./components/admin/AdminDashboardComponent";
-import UserDashboardComponent from "./components/user/UserDashboardComponent";
-import RegisterComponent from "./components/auth/RegisterComponent";
 import ProtectedRoute from "./components/global/ProtectedRoute";
-import ManageFlightsComponent from "./components/admin/flight/ManageFlights";
-import ManageFairsComponent from "./components/admin/fair/ManageFairsComponent";
-import AddOrUpdateFairComponent from "./components/admin/fair/AddOrUpdateFairComponent";
-import ManageBookingsComponent from "./components/admin/booking/ManageBookingsComponent";
-import UpdateBookingComponent from "./components/admin/booking/UpdateBookingComponent";
+
 import AddOrUpdateFlight from "./components/admin/flight/AddOrUpdateFlight";
 import AddOrUpdateAirline from "./components/admin/airline/AddOrUpdateAirline";
 import AddOrUpdateAirport from "./components/admin/airport/AddOrUpdateAirport";
 import UserBooking from "./components/user/UserBooking";
 import UserProfile from "./components/user/UserProfile";
+import UserRoute from "./components/global/UserRoute";
+import Header from "./components/global/Header";
+import Home from "./components/global/Home";
+import Footer from "./components/global/Footer";
+// import Register from "./components/auth/Register";
+import ManageFare from "./components/admin/fare/ManageFare";
+import ManageFlight from "./components/admin/flight/ManageFlight";
+import AdminDashboard from "./components/admin/AdminDashboard";
+// import Login from "./components/auth/Login";
+import AddOrUpdateFare from "./components/admin/fare/AddOrUpdateFare";
+import FlightSearch from "./components/user/FlightSearch";
+
+import UserDashboard from "./components/user/UserDashboard";
+import FlightBook from "./components/user/FlightBook";
+import UpdateBooking from "./components/admin/booking/UpdateBooking";
+import ManageBooking from "./components/admin/booking/ManageBooking";
+import Acknowledgment from "./components/user/Acknowledgment";
+import Log from "./components/auth/Log";
+import Reg from "./components/auth/Reg";
+import CheckIn from "./components/user/CheckIn";
 
 function App() {
   return (
     <div>
       <Router>
-        <HeaderComponent />
+        <Header />
         <br></br>
         <div className="container">
           <Switch>
-            <Route path="/" exact component={HomeComponent}></Route>
-            <Route path="/home" component={HomeComponent}></Route>
-            {/* <Route path="/login" component={LoginComponent}></Route> */}
-            <Route path="/login" component={LoginComponentClass}></Route>
-            <Route path="/register" component={RegisterComponent}></Route>
-            {/* <Route path="/register" component={RegisterComponentClass}></Route> */}
+            {/* GLOBAL */}
 
-            <Route path="/userProfile" component={UserProfile}></Route>
-            <Route path="/userBooking" component={UserBooking}></Route>
-            <Route
-              path="/userDashboard"
-              component={UserDashboardComponent}
-            ></Route>
+            <Route path="/" exact component={Home}></Route>
+            <Route path="/home" component={Home}></Route>
+            <Route path="/flights" component={FlightSearch}></Route>
+            {/* <Route path="/login" component={Login}></Route> */}
+            <Route path="/login" component={Log}></Route>
+            {/* <Route path="/register" component={Register}></Route> */}
+            <Route path="/register" component={Reg}></Route>
 
-            <Route path="/allFlights" component={FlightAllComponent}></Route>
-            <Route path="/flights" component={FlightSearchComponent}></Route>
-            <Route path="/booking/:id" component={FlightBookComponent}></Route>
-            <Route
-              path="/checkIn/:id"
-              component={FlightCheckInComponent}
-            ></Route>
+            <Route path="/checkin" component={CheckIn}></Route>
+
+            {/* USER */}
+
+            <UserRoute path="/user_profile" component={UserProfile}></UserRoute>
+            <UserRoute path="/user_booking" component={UserBooking}></UserRoute>
+            <UserRoute
+              path="/user_dashboard"
+              component={UserDashboard}
+            ></UserRoute>
+            <UserRoute path="/booking/:id" component={FlightBook}></UserRoute>
+            <UserRoute
+              path="/acknowledgment/:id"
+              component={Acknowledgment}
+            ></UserRoute>
+
+            {/* ADMIN */}
 
             <ProtectedRoute
-              path="/adminDashboard"
-              component={AdminDashboardComponent}
+              path="/admin_dashboard"
+              component={AdminDashboard}
+            ></ProtectedRoute>
+            {/* Flight */}
+            <ProtectedRoute
+              path="/manage_flight"
+              component={ManageFlight}
             ></ProtectedRoute>
             <ProtectedRoute
-              path="/manageFlights"
-              component={ManageFlightsComponent}
-            ></ProtectedRoute>
-            <ProtectedRoute
-              path="/addFlight/:id"
+              path="/add_flight/:id"
               component={AddOrUpdateFlight}
             ></ProtectedRoute>
             <ProtectedRoute
-              path="/updateFlight/:id"
+              path="/update_flight/:id"
               component={AddOrUpdateFlight}
             ></ProtectedRoute>
-
+            {/* Fare */}
             <ProtectedRoute
-              path="/manageFairs"
-              component={ManageFairsComponent}
+              path="/manage_fare"
+              component={ManageFare}
             ></ProtectedRoute>
             <ProtectedRoute
-              path="/addFair/:id"
-              component={AddOrUpdateFairComponent}
+              path="/add_fare/:id"
+              component={AddOrUpdateFare}
             ></ProtectedRoute>
             <ProtectedRoute
-              path="/updateFair/:id"
-              component={AddOrUpdateFairComponent}
+              path="/update_fare/:id"
+              component={AddOrUpdateFare}
             ></ProtectedRoute>
-
+            {/* Booking */}
             <ProtectedRoute
-              path="/manageBookings"
-              component={ManageBookingsComponent}
+              path="/manage_booking"
+              component={ManageBooking}
             ></ProtectedRoute>
+            <UserRoute
+              path="/update_booking/:id"
+              component={UpdateBooking}
+            ></UserRoute>
+            {/* Airline */}
             <ProtectedRoute
-              path="/updateBooking/:id"
-              component={UpdateBookingComponent}
-            ></ProtectedRoute>
-            <ProtectedRoute
-              path="/addOrUpdateAirline/:id"
+              path="/add_or_update_airline/:id"
               component={AddOrUpdateAirline}
             ></ProtectedRoute>
+            {/* Airport */}
             <ProtectedRoute
-              path="/addOrUpdateAirport/:id"
+              path="/add_or_update_airport/:id"
               component={AddOrUpdateAirport}
             ></ProtectedRoute>
           </Switch>
         </div>
-        <br></br>
-        <FooterComponent />
+        <Footer />
       </Router>
     </div>
   );

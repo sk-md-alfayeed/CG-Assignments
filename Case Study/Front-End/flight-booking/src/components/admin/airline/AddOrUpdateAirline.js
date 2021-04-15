@@ -33,12 +33,16 @@ function AddOrUpdateAirline() {
       airlineName: airlineName,
     };
     if (id === "add") {
-      FlightService.addAirline(airline).then((res) => {
-        history.push("/addOrUpdateAirline/add");
-      });
+      FlightService.addAirline(airline)
+        .then((res) => {
+          history.push("/addOrUpdateAirline/add");
+        })
+        .catch((error) => console.error(`Error :  ${error}`));
     } else {
       FlightService.updateAirline(airline).then((res) => {
-        history.push("/addOrUpdateAirline/:id");
+        history
+          .push("/addOrUpdateAirline/:id")
+          .catch((error) => console.error(`Error :  ${error}`));
       });
     }
   };

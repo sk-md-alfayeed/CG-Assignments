@@ -1,0 +1,10 @@
+server:
+   port: 8084
+spring:
+   application:
+      name: checkin-management
+   data:
+      mongodb:
+         database: flight_booking_system
+         host: localhost
+         port: 27017

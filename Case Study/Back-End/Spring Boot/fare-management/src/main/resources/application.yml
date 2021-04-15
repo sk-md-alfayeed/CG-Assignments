@@ -1,0 +1,10 @@
+server:
+    port: 8082
+spring:
+    application:
+        name: fare-management
+    data:
+        mongodb:
+            database: flight_booking_system
+            host: localhost
+            port: 27017

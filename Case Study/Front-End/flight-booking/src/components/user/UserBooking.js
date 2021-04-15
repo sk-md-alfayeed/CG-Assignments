@@ -8,11 +8,14 @@ function UserBooking() {
   const [bookingList, setBookingList] = useState([]);
 
   useEffect(() => {
-    FlightService.getUserBooking(username).then((response) => {
-      if (response.data !== null) {
-        setBookingList(response.data.bookingList);
-      }
-    });
+    FlightService.getBookingsByUserId(username)
+      .then((response) => {
+        if (response.data !== null) {
+          setBookingList(response.data);
+          console.log(response.data);
+        }
+      })
+      .catch((error) => console.error(`Error :  ${error}`));
   }, [username]);
 
   const updateBooking = (id) => {
@@ -22,9 +25,12 @@ function UserBooking() {
   const cancelBooking = (booking) => {
     booking.active = !booking.active;
     FlightService.cancelBooking(booking)
-      .then((res) => {})
+      .then((res) => {
+        history.push("/userBooking");
+      })
       .catch((error) => console.error(`Error :  ${error}`));
   };
+
   return (
     <div>
       <h1 className="text-center"> Bookings List</h1>

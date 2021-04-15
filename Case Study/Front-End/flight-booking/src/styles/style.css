@@ -4,11 +4,16 @@
   box-sizing: border-box;
 }
 body {
-  background: #baccdd !important;
   min-height: 100vh;
   display: flex;
   font-weight: 400;
   font-family: "Fira Sans", sans-serif;
+  background-image: url("../flight.jpg") !important;
+
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
 }
 
 h1,
