@@ -64,7 +64,7 @@ class FlightManagementControllerTest {
 		Mockito.when(flightService.getFlights(Mockito.any(Search.class))).thenReturn(flights);
 
 		MvcResult result = mockMvc
-				.perform(MockMvcRequestBuilders.post("/flights").contentType(MediaType.APPLICATION_JSON)
+				.perform(MockMvcRequestBuilders.post("/flight/flights").contentType(MediaType.APPLICATION_JSON)
 						.content(mapper.writeValueAsString(search).getBytes(StandardCharsets.UTF_8))
 						.accept(MediaType.APPLICATION_JSON))
 				.andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
@@ -80,7 +80,7 @@ class FlightManagementControllerTest {
 		Mockito.when(flightService.getAllFlights()).thenReturn(flights);
 
 		MvcResult result = mockMvc
-				.perform(MockMvcRequestBuilders.get("/allFlights").contentType(MediaType.APPLICATION_JSON)
+				.perform(MockMvcRequestBuilders.get("/flight/allFlights").contentType(MediaType.APPLICATION_JSON)
 						.accept(MediaType.APPLICATION_JSON))
 				.andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 
@@ -95,7 +95,7 @@ class FlightManagementControllerTest {
 		Mockito.when(flightService.getFlight(flight.getId())).thenReturn(Optional.of(flight));
 
 		MvcResult result = mockMvc
-				.perform(MockMvcRequestBuilders.get("/getFlight/" + flight.getId())
+				.perform(MockMvcRequestBuilders.get("/flight/getFlight/" + flight.getId())
 						.contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
 				.andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 
@@ -111,7 +111,7 @@ class FlightManagementControllerTest {
 				.thenReturn("Flight and Fare added  with id : " + flight.getId());
 
 		MvcResult result = mockMvc
-				.perform(MockMvcRequestBuilders.post("/addFlight").contentType(MediaType.APPLICATION_JSON)
+				.perform(MockMvcRequestBuilders.post("/flight/addFlight").contentType(MediaType.APPLICATION_JSON)
 						.content(mapper.writeValueAsString(flight).getBytes(StandardCharsets.UTF_8))
 						.accept(MediaType.APPLICATION_JSON))
 				.andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
@@ -129,7 +129,7 @@ class FlightManagementControllerTest {
 				.thenReturn("Flight Updated with id : " + flight.getId());
 
 		MvcResult result = mockMvc
-				.perform(MockMvcRequestBuilders.put("/updateFlight").contentType(MediaType.APPLICATION_JSON)
+				.perform(MockMvcRequestBuilders.put("/flight/updateFlight").contentType(MediaType.APPLICATION_JSON)
 						.content(mapper.writeValueAsString(flight).getBytes(StandardCharsets.UTF_8))
 						.accept(MediaType.APPLICATION_JSON))
 				.andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
@@ -147,7 +147,7 @@ class FlightManagementControllerTest {
 				.thenReturn("Flight Deleted with id : " + flight.getId());
 
 		MvcResult result = mockMvc
-				.perform(MockMvcRequestBuilders.delete("/deleteFlight/" + flight.getId())
+				.perform(MockMvcRequestBuilders.delete("/flight/deleteFlight/" + flight.getId())
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(mapper.writeValueAsString(flight).getBytes(StandardCharsets.UTF_8))
 						.accept(MediaType.APPLICATION_JSON))

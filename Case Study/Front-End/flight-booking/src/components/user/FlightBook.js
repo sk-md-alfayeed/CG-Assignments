@@ -404,7 +404,7 @@ function FlightBook() {
           </div>
         </div>
       ) : null}
-      {passengerList.length > 1 ? (
+      {passengerList.length >= 1 ? (
         <div className="section is-fullheight">
           <div className="container">
             <div className="column is-4 is-offset-4">
