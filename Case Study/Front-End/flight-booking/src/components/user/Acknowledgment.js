@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
 import { useParams } from "react-router";
 import FlightService from "../../services/FlightService";
 
@@ -16,11 +15,11 @@ function Acknowledgment() {
       })
       .catch((error) => console.error(`Error :  ${error}`));
     axios
-      .get("http://localhost:3002/getPayment", {
+      .post("http://localhost:3002/getPayment", {
         bookingid: id,
       })
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
         setPayment(response.data);
       });
   }, [id]);
@@ -41,14 +40,12 @@ function Acknowledgment() {
                   <h6>Payment Id</h6>
                   <p>{payment.paymentid}</p>
                   <h6>Signature</h6>
-                  <p>{payment.paymentid}</p>
+                  <p>{payment.signature}</p>
                   <h6>Amount Paid</h6>
-                  <p>{payment.paymentid}</p>
+                  <p>{payment.totalamount}</p>
                   <p>
-                    Status : {booking.status === true ? "Booked" : "Not Booked"}
+                    Status : {booking.active === true ? "Booked" : "Not Booked"}
                   </p>
-
-                  <Button className="btn btn-success">Invoice</Button>
                 </form>
               </div>
             </div>

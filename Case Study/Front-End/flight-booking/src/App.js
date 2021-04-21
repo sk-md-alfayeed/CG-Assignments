@@ -28,7 +28,6 @@ import ManageBooking from "./components/admin/booking/ManageBooking";
 import Acknowledgment from "./components/user/Acknowledgment";
 import Log from "./components/auth/Log";
 import Reg from "./components/auth/Reg";
-import CheckIn from "./components/user/CheckIn";
 
 function App() {
   return (
@@ -47,8 +46,6 @@ function App() {
             <Route path="/login" component={Log}></Route>
             {/* <Route path="/register" component={Register}></Route> */}
             <Route path="/register" component={Reg}></Route>
-
-            <Route path="/checkin" component={CheckIn}></Route>
 
             {/* USER */}
 

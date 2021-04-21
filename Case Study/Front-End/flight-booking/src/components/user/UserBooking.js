@@ -18,15 +18,11 @@ function UserBooking() {
       .catch((error) => console.error(`Error :  ${error}`));
   }, [username]);
 
-  const updateBooking = (id) => {
-    history.push(`/updateBooking/${id}`);
-  };
-
   const cancelBooking = (booking) => {
     booking.active = !booking.active;
     FlightService.cancelBooking(booking)
       .then((res) => {
-        history.push("/userBooking");
+        history.push("/user_booking");
       })
       .catch((error) => console.error(`Error :  ${error}`));
   };
@@ -43,7 +39,6 @@ function UserBooking() {
               <td> Flight</td>
               <td> Passenger List</td>
               <td> Active</td>
-              <td> Update</td>
               <td> Change Status</td>
             </tr>
           </thead>
@@ -121,14 +116,6 @@ function UserBooking() {
                 </td>
 
                 <td> {booking.active.toString()}</td>
-                <td>
-                  <button
-                    onClick={() => updateBooking(booking.id)}
-                    className="btn btn-info"
-                  >
-                    Update
-                  </button>
-                </td>
 
                 <td>
                   <button

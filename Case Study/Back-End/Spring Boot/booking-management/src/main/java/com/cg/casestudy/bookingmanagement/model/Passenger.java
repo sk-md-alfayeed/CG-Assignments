@@ -27,5 +27,4 @@ public class Passenger {
 	@Range(min=5, max=120, message="age must be 5 to 120")
 	private Integer age;
 	private String gender;
-	private String seatNo;
 }

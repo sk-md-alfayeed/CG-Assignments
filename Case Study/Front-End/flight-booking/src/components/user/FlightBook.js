@@ -68,16 +68,8 @@ function FlightBook() {
 
   const history = useHistory();
   const [flight, setFlight] = useState({});
-  // const [airline, setAirline] = useState({});
   const [passengerList, setPassengerList] = useState([]);
   const [passengerId, setPassengerId] = useState(1);
-  // const [departureAirport, setDepartureAirport] = useState({});
-  // const [destinationAirport, setDestinationAirport] = useState({});
-  // const [firstName, setFirstName] = useState("");
-  // const [middleName, setMiddleName] = useState("");
-  // const [lastName, setLastName] = useState("");
-  // const [age, setAge] = useState("");
-  // const [gender, setGender] = useState("");
 
   //Passenger form Validation
   const { values, errors, handleChange, handleSubmit } = useForm(
@@ -90,9 +82,6 @@ function FlightBook() {
       .then((response) => {
         if (response.data) {
           setFlight(response.data);
-          // setAirline(response.data.airline);
-          // setDepartureAirport(response.data.departureAirport);
-          // setDestinationAirport(response.data.destinationAirport);
         }
       })
       .catch((error) => console.error(`Error :  ${error}`));
@@ -102,17 +91,6 @@ function FlightBook() {
   //book flight
   const bookFlight = (response) => {
     console.log(response);
-    // event.preventDefault();
-    // let passenger = {
-    //   id: passengerId,
-    //   firstName: firstName,
-    //   middleName: middleName,
-    //   lastName: lastName,
-    //   age: age,
-    //   gender: gender,
-    // };
-    // let myPassengerList = [];
-    // myPassengerList.push(passenger);
 
     let booking = {
       id: flight.id + "-" + flight.airline.airlineName + "-" + randomNumber,
@@ -291,7 +269,7 @@ function FlightBook() {
           </div>
         ) : null}
       </div>
-      {passengerList.length < 2 ? (
+      {passengerList.length < 1 ? (
         <div className="section is-fullheight">
           <div className="container">
             <div className="column is-4 is-offset-4">
@@ -384,7 +362,7 @@ function FlightBook() {
                         </option>
                         <option value="Female">Female</option>
                         <option value="Male">Male</option>
-                        <option value="Transgender">Transgender</option>
+                        <option value="Other">Other</option>
                       </select>
                       {errors.gender && (
                         <p className="help is-danger">{errors.gender}</p>
@@ -404,7 +382,7 @@ function FlightBook() {
           </div>
         </div>
       ) : null}
-      {passengerList.length >= 1 ? (
+      {passengerList.length === 1 ? (
         <div className="section is-fullheight">
           <div className="container">
             <div className="column is-4 is-offset-4">

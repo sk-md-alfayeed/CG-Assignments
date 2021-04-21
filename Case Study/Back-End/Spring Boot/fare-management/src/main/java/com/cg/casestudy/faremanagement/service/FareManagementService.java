@@ -15,9 +15,9 @@ public interface FareManagementService {
 
 	Optional<Fare> getFare(String id) throws FareNotFoundException;
 
-	void addFare(Fare fare);
+	String addFare(Fare fare);
 
-	void updateFare(Fare fare);
+	String updateFare(Fare fare);
 
 	String deleteFare(String id) throws IdNotFoundException;
 

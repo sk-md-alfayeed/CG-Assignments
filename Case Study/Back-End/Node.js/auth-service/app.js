@@ -86,12 +86,13 @@ app.post("/register", (req, res) => {
 app.put("/update", (req, res) => {
   const oldUsername = req.body.oldUsername;
   const fullname = req.body.fullname;
-  const username = req.body.username;
   const email = req.body.email;
 
+  console.log(req.body);
+
   db.query(
-    "UPDATE users SET fullname = ?, username = ?, email = ? WHERE username = ?",
-    [fullname, username, email, oldUsername],
+    "UPDATE users SET fullname = ?, email = ? WHERE username = ?",
+    [fullname, email, oldUsername],
     (err, result) => {
       console.log("User Updated : " + result);
     }

@@ -19,10 +19,8 @@ function Reg() {
         email: values.email,
         password: values.password,
       })
-      .then((response) => {
-        console.log(response);
-        history.push("/register");
-      });
+      .then(() => {});
+    history.push("/login");
   }
 
   return (

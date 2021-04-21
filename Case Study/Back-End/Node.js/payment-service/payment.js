@@ -7,6 +7,14 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const mysql = require("mysql");
 
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST", "PUT"],
+    credentials: true,
+  })
+);
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -96,8 +104,9 @@ app.post("/addPayment", (req, res) => {
   );
 });
 
-app.get("/getPayment", (req, res) => {
+app.post("/getPayment", (req, res) => {
   const bookingid = req.body.bookingid;
+  console.log(bookingid);
   db.query(
     "SELECT * FROM payments WHERE bookingid = ?;",
     bookingid,
@@ -105,7 +114,7 @@ app.get("/getPayment", (req, res) => {
       if (err) {
         res.send({ err: err });
       } else {
-        res.send({ result: result });
+        res.send(result[0]);
       }
     }
   );

@@ -49,13 +49,13 @@ class FlightManagementControllerTest {
 
 		flights = List.of(
 				new Flight("CD105", new Airline("1", "AA105", "AirAlpha"), new Airport("1", "CCU", "Kolkata"),
-						new Airport("2", "DEL", "Delhi"), "21-04-2021", "21-04-2021", "22:20", "00:20", 100),
+						new Airport("2", "DEL", "Delhi"), "2021-04-30", "2021-04-30", "22:20", "00:20", 100),
 				new Flight("CD106", new Airline("1", "AA105", "AirAlpha"), new Airport("1", "CCU", "Kolkata"),
-						new Airport("2", "DEL", "Delhi"), "21-04-2021", "21-04-2021", "22:20", "00:20", 100),
+						new Airport("2", "DEL", "Delhi"), "2021-04-30", "2021-04-30", "22:20", "00:20", 100),
 				new Flight("CD107", new Airline("1", "AA105", "AirAlpha"), new Airport("1", "CCU", "Kolkata"),
-						new Airport("2", "DEL", "Delhi"), "21-04-2021", "21-04-2021", "22:20", "00:20", 100));
+						new Airport("2", "DEL", "Delhi"), "2021-04-30", "2021-04-30", "22:20", "00:20", 100));
 		flight = new Flight("CD107", new Airline("2", "AB109", "AirBravo"), new Airport("1", "CCU", "Kolkata"),
-				new Airport("2", "DEL", "Delhi"), "25-04-2021", "25-04-2021", "12:20", "02:20", 100);
+				new Airport("2", "DEL", "Delhi"), "2021-04-30", "2021-04-30", "12:20", "02:20", 100);
 	}
 
 	@Test

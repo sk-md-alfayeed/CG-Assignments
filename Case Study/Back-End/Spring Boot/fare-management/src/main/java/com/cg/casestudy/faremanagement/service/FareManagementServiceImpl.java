@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 import com.cg.casestudy.faremanagement.exception.FareNotFoundException;
 import com.cg.casestudy.faremanagement.exception.IdNotFoundException;
 import com.cg.casestudy.faremanagement.model.Fare;
-import com.cg.casestudy.faremanagement.repository.FareManagementReopsitory;
+import com.cg.casestudy.faremanagement.repository.FareManagementRepository;
 
 @Service
 public class FareManagementServiceImpl implements FareManagementService {
 
 	@Autowired
-	FareManagementReopsitory fareManagementRepository;
+	FareManagementRepository fareManagementRepository;
 
 	// Getting 'All Fare List' from FareReopsitory
 	@Override
@@ -39,14 +39,16 @@ public class FareManagementServiceImpl implements FareManagementService {
 
 	// Adding 'Fare' to database using FareFareReopsitory
 	@Override
-	public void addFare(Fare fare) {
+	public String addFare(Fare fare) {
 		fareManagementRepository.save(fare);
+		return "Fare Added with Flight Id : "+ fare.getId();
 	}
  
 	// Updating 'Fare' in database using FareReopsitory
 	@Override
-	public void updateFare(Fare fare) {
+	public String updateFare(Fare fare) {
 		fareManagementRepository.save(fare);
+		return "Fare Updated with Flight Id : "+ fare.getId();
 	}
 
 	// Deleting 'Fare' by Flight Id in database using FareReopsitory

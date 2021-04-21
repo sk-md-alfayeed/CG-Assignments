@@ -94,14 +94,14 @@ public class BookingManagementServiceImpl implements BookingManagementService {
 	@Override
 	public String addBooking(Booking booking) {
 		bookingManagementRepository.save(booking);
-		return "Flight Booked with: " + booking.getId();
+		return "Booking Added with : " + booking.getId();
 	}
 
 	// Updating 'Booking' to database using BookingManagementReopsitory
 	@Override
 	public String updateBooking(Booking booking) {
 		bookingManagementRepository.save(booking);
-		return "Flight Updated with: " + booking.getId();
+		return "Booking Updated with : " + booking.getId();
 	}
 
 	// Deleting 'Booking' by Flight Id in database using FareReopsitory

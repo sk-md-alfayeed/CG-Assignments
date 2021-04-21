@@ -145,26 +145,6 @@ class FlightSearchService {
       FLIGHT_BOOK_REST_API_URL + "/getBookingsByUserId/" + userId
     );
   }
-
-  //Flight Check-In Microservice
-  getCheckIn(search) {
-    return axios.post(FLIGHT_CHECKIN_REST_API_URL + "/getCheckIn", search);
-  }
-
-  getAllCheckIns() {
-    return axios.get(FLIGHT_CHECKIN_REST_API_URL + "/allCheckIns");
-  }
-  getCheckInById(checkInId) {
-    return axios.get(
-      FLIGHT_CHECKIN_REST_API_URL + "/getCheckInById/" + checkInId
-    );
-  }
-  addCheckIn(checkIn) {
-    return axios.post(FLIGHT_CHECKIN_REST_API_URL + "/addCheckIn", checkIn);
-  }
-  updateCheckIn(checkIn) {
-    return axios.put(FLIGHT_CHECKIN_REST_API_URL + "/updateCheckIn/", checkIn);
-  }
 }
 
 export default new FlightSearchService();

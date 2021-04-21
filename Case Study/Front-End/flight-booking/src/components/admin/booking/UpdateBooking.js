@@ -56,6 +56,7 @@ function UpdateBooking() {
 
     let myBooking = {
       id: booking.id,
+      pnrNo: booking.pnrNo,
       flight: flight,
       passengerList: myPassengerList,
       active: true,
@@ -130,7 +131,7 @@ function UpdateBooking() {
                                 placeholder="First Name"
                                 name="firstName"
                                 className="form-control"
-                                value={passenger.firstName || ""}
+                                value={firstName || ""}
                                 onChange={(e) => {
                                   setFirstName(e.target.value);
                                 }}
@@ -141,7 +142,7 @@ function UpdateBooking() {
                                 placeholder="Middle Name"
                                 name="middleName"
                                 className="form-control"
-                                value={passenger.middleName || ""}
+                                value={middleName || ""}
                                 onChange={(e) => {
                                   setMiddleName(e.target.value);
                                 }}
@@ -152,7 +153,7 @@ function UpdateBooking() {
                                 placeholder="Last Name"
                                 name="lastName"
                                 className="form-control"
-                                value={passenger.lastName || ""}
+                                value={lastName || ""}
                                 onChange={(e) => {
                                   setLastName(e.target.value);
                                 }}
@@ -163,7 +164,7 @@ function UpdateBooking() {
                                 placeholder="Age"
                                 name="age"
                                 className="form-control"
-                                value={passenger.age || ""}
+                                value={age || ""}
                                 onChange={(e) => {
                                   setAge(e.target.value);
                                 }}
@@ -173,7 +174,7 @@ function UpdateBooking() {
                               <select
                                 className="form-control"
                                 name="gender"
-                                value={passenger.gender || ""}
+                                value={gender || ""}
                                 onChange={(e) => {
                                   setGender(e.target.value);
                                 }}
@@ -186,7 +187,7 @@ function UpdateBooking() {
                                 </option>
                                 <option value="Female">Female</option>
                                 <option value="Male">Male</option>
-                                <option value="Transgender">Other</option>
+                                <option value="Other">Other</option>
                               </select>
                             </td>
                           </tr>
